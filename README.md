@@ -1,5 +1,7 @@
 # Kanban Studio
 
+![Topics](https://img.shields.io/badge/topics-ai%20%7C%20fastapi%20%7C%20nextjs%20%7C%20kanban%20%7C%20openrouter%20%7C%20docker-blue)
+
 An AI-powered project management board. Drag cards, rename columns, and ask an AI assistant to manage your board through natural language — all persisted in a SQLite database and served from a single Docker container.
 
 ---
@@ -50,8 +52,8 @@ An AI-powered project management board. Drag cards, rename columns, and ask an A
 
 ```bash
 # 1. Clone
-git clone https://github.com/amoani-yeboah19/pm-MVP
-cd pm-MVP
+git clone https://github.com/amoani-yeboah19/Kanban-Studio-MVP
+cd Kanban-Studio-MVP
 
 # 2. Add your key
 echo "OPENROUTER_API_KEY=sk-or-..." > .env
@@ -157,6 +159,14 @@ BASE_URL=http://localhost:8000 npx playwright test
 ├── Dockerfile           # Multi-stage: node build → python runtime
 └── docker-compose.yml
 ```
+
+---
+
+## Author
+
+Built by **Bright** — Full-Stack Developer & Agentic AI Engineer
+
+[LinkedIn](https://linkedin.com/in/bright-amoani-yebaoh) · [Website](https://devv-bright.vercel.app)
 
 ---
 
