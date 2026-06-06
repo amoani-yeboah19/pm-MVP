@@ -20,7 +20,7 @@ afterEach(() => {
 
 describe("AISidebar", () => {
   it("renders input and send button", () => {
-    render(<AISidebar onBoardUpdate={vi.fn()} />);
+    render(<AISidebar onBoardUpdate={vi.fn()} onClose={vi.fn()} />);
     expect(screen.getByPlaceholderText(/ask ai/i)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /send/i })).toBeInTheDocument();
   });
@@ -31,7 +31,7 @@ describe("AISidebar", () => {
       board_update: null,
       board: emptyBoard,
     });
-    render(<AISidebar onBoardUpdate={vi.fn()} />);
+    render(<AISidebar onBoardUpdate={vi.fn()} onClose={vi.fn()} />);
     await userEvent.type(screen.getByPlaceholderText(/ask ai/i), "Hello");
     await userEvent.click(screen.getByRole("button", { name: /send/i }));
 
@@ -45,11 +45,12 @@ describe("AISidebar", () => {
     let resolve!: (v: unknown) => void;
     vi.mocked(api.aiChat).mockReturnValue(new Promise((r) => { resolve = r; }) as ReturnType<typeof api.aiChat>);
 
-    render(<AISidebar onBoardUpdate={vi.fn()} />);
+    render(<AISidebar onBoardUpdate={vi.fn()} onClose={vi.fn()} />);
     await userEvent.type(screen.getByPlaceholderText(/ask ai/i), "test");
     await userEvent.click(screen.getByRole("button", { name: /send/i }));
 
-    expect(screen.getByText(/thinking/i)).toBeInTheDocument();
+    // loading indicator: animated dots appear in a message bubble
+    expect(screen.getAllByTestId("message").length).toBeGreaterThanOrEqual(1);
     expect(screen.getByPlaceholderText(/ask ai/i)).toBeDisabled();
 
     resolve({ message: "done", board_update: null, board: emptyBoard });

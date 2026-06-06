@@ -22,30 +22,35 @@ export const KanbanCard = ({ card, onDelete }: KanbanCardProps) => {
       ref={setNodeRef}
       style={style}
       className={clsx(
-        "rounded-2xl border border-transparent bg-white px-4 py-4 shadow-[0_12px_24px_rgba(3,33,71,0.08)]",
-        "transition-all duration-150",
-        isDragging && "opacity-60 shadow-[0_18px_32px_rgba(3,33,71,0.16)]"
+        "group rounded-2xl border border-transparent bg-white px-4 py-3.5",
+        "shadow-[0_2px_8px_rgba(3,33,71,0.06)] transition-all duration-150",
+        "hover:border-[var(--stroke)] hover:shadow-[0_4px_16px_rgba(3,33,71,0.10)]",
+        isDragging && "opacity-50 shadow-[0_12px_32px_rgba(3,33,71,0.15)]"
       )}
       {...attributes}
       {...listeners}
       data-testid={`card-${card.id}`}
     >
       <div className="flex items-start justify-between gap-3">
-        <div>
-          <h4 className="font-display text-base font-semibold text-[var(--navy-dark)]">
+        <div className="min-w-0 flex-1">
+          <h4 className="font-display text-sm font-semibold leading-5 text-[var(--navy-dark)]">
             {card.title}
           </h4>
-          <p className="mt-2 text-sm leading-6 text-[var(--gray-text)]">
-            {card.details}
-          </p>
+          {card.details && (
+            <p className="mt-1.5 text-xs leading-5 text-[var(--gray-text)]">
+              {card.details}
+            </p>
+          )}
         </div>
         <button
           type="button"
           onClick={() => onDelete(card.id)}
-          className="rounded-full border border-transparent px-2 py-1 text-xs font-semibold text-[var(--gray-text)] transition hover:border-[var(--stroke)] hover:text-[var(--navy-dark)]"
+          className="shrink-0 rounded-lg p-1 text-[var(--gray-text)] opacity-0 transition group-hover:opacity-100 hover:bg-[var(--surface)] hover:text-red-400"
           aria-label={`Delete ${card.title}`}
         >
-          Remove
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+          </svg>
         </button>
       </div>
     </article>

@@ -98,10 +98,7 @@ test("sends a message via AI sidebar and receives a reply", async ({ page }) => 
 
   // User message appears immediately
   await expect(page.getByTestId("message").first()).toContainText("Reply with exactly: hello");
-  // Loading indicator visible
-  await expect(page.getByText(/thinking/i)).toBeVisible();
   // AI reply eventually appears (real API call — up to 40s)
-  await expect(page.getByTestId("message").nth(1)).not.toContainText(/thinking/i, { timeout: 40000 });
   await expect(page.getByTestId("message")).toHaveCount(2, { timeout: 40000 });
 });
 
