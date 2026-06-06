@@ -174,3 +174,14 @@ cython_debug/
 
 .DS_Store
 
+# Next.js static export copied into backend for testing
+backend/out/
+
+# SQLite databases
+*.db
+*.db-journal
+
+# Playwright test artefacts
+frontend/test-results/
+frontend/playwright-report/
+

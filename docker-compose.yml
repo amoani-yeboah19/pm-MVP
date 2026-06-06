@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_PATH=/app/data/kanban.db
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - kanban_data:/app/data
+
+volumes:
+  kanban_data:
