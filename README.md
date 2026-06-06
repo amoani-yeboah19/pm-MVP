@@ -166,7 +166,7 @@ BASE_URL=http://localhost:8000 npx playwright test
 
 Built by **Bright** — Full-Stack Developer & Agentic AI Engineer
 
-[LinkedIn](https://linkedin.com/in/bright-amoani-yebaoh) · [Website](https://devv-bright.vercel.app)
+[LinkedIn](https://linkedin.com/in/bright-amoani-yeboah) · [Website](https://devv-bright.vercel.app)
 
 ---
 
